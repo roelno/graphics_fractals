@@ -31,7 +31,7 @@ void image_init(Image *src) {
     src->data = NULL;
     src->depth = NULL;
     src->alpha = NULL;
-    src->maxval = 0.0f;
+    src->maxval = 255.0f;
     src->filename = NULL;
   }
 }
@@ -83,7 +83,7 @@ void image_dealloc(Image *src) {
   src->cols = 0;
   src->depth = NULL;
   src->alpha = NULL;
-  src->maxval = 0.0f;
+  src->maxval = 255.0f;
   src->filename = NULL;
 }
 
@@ -169,7 +169,7 @@ int image_write(Image *src, char *filename) {
 
   if (fp) {
     fprintf(fp, "P6\n");
-    fprintf(fp, "%d %d\n%d\n", src->cols, src->rows, (int)src->maxval);
+    fprintf(fp, "%d %d\n%d\n", src->cols, src->rows, 255);
 
     for (int i = 0; i < src->rows; i++) {
       for (int j = 0; j < src->cols; j++) {
@@ -214,6 +214,7 @@ void image_setz(Image *src, int r, int c, float val) {
 }
 
 void image_reset(Image *src) {
+  src->maxval = 255.0f;
   for (int i = 0; i < src->rows; i++) {
     for (int j = 0; j < src->cols; j++) {
       src->data[i][j].rgb[0] = 0.0f;
