@@ -15,7 +15,7 @@
  */
 typedef struct {
   float rgb[3];
-  float alpha;
+  float a;
   float z;
 } FPixel;
 
