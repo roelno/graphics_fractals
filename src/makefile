@@ -26,16 +26,16 @@ LIBS = -lm -limage
 LFLAGS = -L$(LIBDIR) -L/opt/local/lib
 
 # put all of the relevant include files here
-_DEPS = image.h
+_DEPS = image.h fractals.h
 
 # convert them to point to the right place
 DEPS = $(patsubst %,$(INCDIR)/%,$(_DEPS))
 
 # put a list of the executables here
-EXECUTABLES = Imagetest
+EXECUTABLES = Imagetest mandeltest
 
 # put a list of all the object files here for all executables (with .o endings)
-_OBJ = Imagetest.o
+_OBJ = Imagetest.o mandeltest.o
 
 # convert them to point to the right place
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
@@ -57,9 +57,10 @@ all:
 
 
 # put the specific executable rules here
-Imagetest: $(ODIR)/Imagetest.o $(OBJ)
-	$(CC) -o $(BINDIR)/$@ $^ $(CFLAGS) $(LFLAGS) $(LIBS)
-
+Imagetest: $(ODIR)/Imagetest.o
+	$(CC) -o $(BINDIR)/$@ $^ $(LFLAGS) $(LIBS)
+mandeltest: $(ODIR)/mandeltest.o
+	$(CC) -o $(BINDIR)/$@ $^ $(LFLAGS) $(LIBS)
 
 .PHONY: clean
 

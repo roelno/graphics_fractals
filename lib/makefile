@@ -24,13 +24,13 @@ LIBDIR = .
 BINDIR = ../bin
 
 # put all of the relevant include files here
-_DEPS = image.h
+_DEPS = image.h fractals.h
 
 # convert them to point to the right place
 DEPS = $(patsubst %,$(INCDIR)/%,$(_DEPS))
 
 # put a list of all the object files (with .o endings)
-_COMMON = image.o
+_COMMON = image.o fractals.o
 
 # convert them to point to the right place
 COMMON = $(patsubst %,$(ODIR)/%,$(_COMMON))
