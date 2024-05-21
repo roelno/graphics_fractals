@@ -42,4 +42,9 @@ void julia(Image *dst, float x0, float y0, float dx);
  */
 void burning_ship(Image *dst, float x0, float y0, float dx);
 
+
+void mandelbrot_color( Image *dst, float x0, float y0, float dx);
+void julia_color(Image *dst, float x0, float y0, float dx);
+void burning_ship_color(Image *dst, float x0, float y0, float dx);
+
 #endif

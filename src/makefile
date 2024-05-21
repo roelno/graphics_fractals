@@ -32,10 +32,10 @@ _DEPS = image.h fractals.h
 DEPS = $(patsubst %,$(INCDIR)/%,$(_DEPS))
 
 # put a list of the executables here
-EXECUTABLES = Imagetest mandeltest
+EXECUTABLES = Imagetest mandeltest mandeltest_color
 
 # put a list of all the object files here for all executables (with .o endings)
-_OBJ = Imagetest.o mandeltest.o
+_OBJ = Imagetest.o mandeltest.o mandeltest_color.o
 
 # convert them to point to the right place
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
@@ -60,6 +60,8 @@ all:
 Imagetest: $(ODIR)/Imagetest.o
 	$(CC) -o $(BINDIR)/$@ $^ $(LFLAGS) $(LIBS)
 mandeltest: $(ODIR)/mandeltest.o
+	$(CC) -o $(BINDIR)/$@ $^ $(LFLAGS) $(LIBS)
+mandeltest_color: $(ODIR)/mandeltest_color.o
 	$(CC) -o $(BINDIR)/$@ $^ $(LFLAGS) $(LIBS)
 
 .PHONY: clean
